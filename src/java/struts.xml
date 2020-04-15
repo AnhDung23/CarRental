@@ -1,0 +1,100 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="" class="dunggla.struts2.ShowAllAction">
+            <result name="success">homePage.jsp</result>
+        </action>
+        <action name="createAccount" class="dunggla.struts2.CreateAccountAction">
+            <exception-mapping exception="java.sql.SQLException" result="input"/>
+            <result name="success">verify.jsp</result>
+            <result name="fail">error.jsp</result>
+            <result name="input">registration.jsp</result>
+        </action>
+        <action name="verifyEmail" class="dunggla.struts2.VerifyEmailAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">showAll</param>
+            </result>
+            <result name="fail">error.jsp</result>
+        </action>
+        <action name="login" class="dunggla.struts2.LoginAction">
+            <result name="admin" type="redirectAction">
+                <param name="actionName">showAll</param>
+            </result>
+            <result name="member" type="redirectAction">
+                <param name="actionName">showAll</param>
+            </result>
+            <result name="invalid">login.jsp</result>
+        </action>
+        <action name="logout" class="dunggla.struts2.LogoutAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">showAll</param>
+            </result>
+        </action>
+        <action name="showAll" class="dunggla.struts2.ShowAllAction">
+            <result name="success">homePage.jsp</result>
+        </action>
+        <action name="search" class="dunggla.struts2.SearchAction">
+            <exception-mapping exception="java.lang.IllegalArgumentException" result="input"/>
+            <result name="success">homePage.jsp</result>
+            <result name="input">homePage.jsp</result>
+        </action>
+        <action name="addToCart" class="dunggla.struts2.AddToCartAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">search</param>
+                <param name="nameSearch">${nameSearch}</param>
+                <param name="cateSearch">${cateSearch}</param>
+                <param name="rentalDate">${rentalDate}</param>
+                <param name="returnDate">${returnDate}</param>
+                <param name="amount">${amount}</param>         
+            </result>
+            <result name="nullsearch" type="redirectAction">
+                <param name="actionName">showAll</param>
+            </result>
+        </action>
+        <action name="updateCart" class="dunggla.struts2.UpdateCartAction">
+            <result name="success">cart.jsp</result>
+        </action>
+        <action name="deleteCart" class="dunggla.struts2.DeleteCartAction">
+            <result name="success">cart.jsp</result>
+        </action>
+        <action name="checkoutCart" class="dunggla.struts2.CheckoutCartAction">
+            <result name="success">cart.jsp</result>
+            <result name="fail">error.jsp</result>
+        </action>
+        <action name="showOrderHistory" class="dunggla.struts2.ShowOrderHistoryAction">
+            <result name="success">orderHistory.jsp</result>
+        </action>
+        <action name="showBillDetail" class="dunggla.struts2.ShowBillDetailAction">
+            <result name="success">billDetail.jsp</result>
+        </action>
+        <action name="deleteOrderBill" class="dunggla.struts2.DeleteOrderBillAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">showOrderHistory</param>
+            </result>
+            <result name="fail">error.jsp</result>
+        </action>
+        <action name="searchHistory" class="dunggla.struts2.SearchHistoryAction">
+            <exception-mapping exception="java.lang.IllegalArgumentException" result="input"/>
+            <result name="success">orderHistory.jsp</result>
+            <result name="fail">error.jsp</result>
+            <result name="input">orderHistory.jsp</result>
+        </action>
+        <action name="showCarsReturned" class="dunggla.struts2.ShowCarsReturnedAction">
+            <result name="success">carReturned.jsp</result>
+        </action>
+        <action name="showFeedBackPage" class="dunggla.struts2.ShowFeedBackPageAction">
+            <result name="success">feedBackPage.jsp</result>
+        </action>
+        <action name="feedBack" class="dunggla.struts2.FeedBackAction">
+            <result name="success">feedBackPage.jsp</result>
+            <result name="fail">error.jsp</result>
+        </action>
+        <action name="showDetailCar" class="dunggla.struts2.ShowDetailCarAction">
+            <result name="success">detailCar.jsp</result>
+        </action>
+    </package>
+</struts>

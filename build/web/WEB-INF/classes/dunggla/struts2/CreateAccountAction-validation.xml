@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+    <field name="email">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>
+                Email is requied.
+            </message>
+        </field-validator>
+        <field-validator type="email">
+            <message>
+                Please enter a valid email address.
+            </message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">5</param>
+            <param name="maxLength">50</param>
+            <message>
+                Email length is requied from 5 to 50 chars.
+            </message>
+        </field-validator>
+    </field>
+    
+    <field name="password">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>
+                Password is requied.
+            </message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">1</param>
+            <param name="maxLength">50</param>
+            <message>
+                Password length is requied from 1 to 50 chars.
+            </message>
+        </field-validator>
+    </field>
+    
+    <field name="fullname">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>
+                Fullname is requied.
+            </message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">1</param>
+            <param name="maxLength">50</param>
+            <message>
+                Fullname length is requied from 1 to 50 chars.
+            </message>
+        </field-validator>
+    </field>
+    
+    <field name="phone">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>
+                Phone is requied.
+            </message>
+        </field-validator>
+<!--        <field-validator type="regex">
+            <param name="expression">\d{2}.\d{8}</param>
+            <message>
+                Phone number is requied 10 nummerals.
+            </message>
+        </field-validator>-->
+    </field>
+    
+    <field name="address">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>
+                Address is requied.
+            </message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">1</param>
+            <param name="maxLength">50</param>
+            <message>
+                Address length is requied from 1 to 50 chars.
+            </message>
+        </field-validator>
+    </field>
+</validators>
